@@ -13,7 +13,8 @@ from markpdf.template import render_html
 
 
 class MarkPDF:
-    def __init__(self):
+    def __init__(self, output_html: bool = False):
+        self._output_html = output_html
         self._md = MarkdownIt("commonmark").enable("table").enable(
             "strikethrough").use(anchors_plugin)
         self._playwright = sync_playwright().start()
@@ -27,11 +28,13 @@ class MarkPDF:
         return markdown
 
     def render(self, markdown: Union[str, Path], output: Union[str, Path]) -> str:
-        html = self._md.render(self._open_markdown(markdown))
         with self._browser as browser:
             page = browser.new_page()
-            page.set_content(render_html(html))
+            page.set_content(render_html(self._open_markdown(markdown)))
             page.wait_for_timeout(1)
 
             rendered_html = page.content()
             HTML(string=rendered_html).write_pdf(output)
+            if self._output_html:
+                with open(output.with_suffix(".html"), "w") as f:
+                    f.write(rendered_html)
