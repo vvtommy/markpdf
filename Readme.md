@@ -18,5 +18,5 @@ MarkPDF 是一款将 markdown 渲染为 PDF 的工具。
 ## Usage
 
 ```bash
-pip install markpdf
+alias markpdf="poetry --directory ${DEVELOPMENT_DIR}/markpdf run python -m markpdf.cli.main"
 ```
