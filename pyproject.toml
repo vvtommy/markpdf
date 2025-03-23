@@ -1,0 +1,22 @@
+[project.scripts]
+markpdf = "markpdf:cli:main.main"
+
+[tool.poetry]
+name = "markpdf"
+version = "0.1.0"
+description = ""
+authors = ["Zhang JL <vvtommy@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+markdown-it-py = "^3.0.0"
+pytest-playwright = "^0.7.0"
+mdit-py-plugins = "^0.4.2"
+weasyprint = "^65.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
