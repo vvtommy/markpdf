@@ -1,3 +1,7 @@
+**Note**
+
+This repository currently hosts a self-contained tool I use personally. It is ​not yet optimized for public use, lacks detailed documentation, and has not been adapted for broader developer scenarios.
+
 # MarkPDF
 
 MarkPDF 是一款将 markdown 渲染为 PDF 的工具。
